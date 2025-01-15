@@ -63,3 +63,31 @@ The voting application only accepts one vote per client browser. It does not reg
 This isn't an example of a properly architected perfectly designed distributed app... it's just a simple
 example of the various types of pieces and languages you might see (queues, persistent data, etc), and how to
 deal with them in Docker at a basic level.
+
+## Steps to Implement a CI-CD Pipeline in Azure Devops.
+
+1. Create a container registery in Azure to store the build artifacts.
+2. Create a agent (Azure Vm) for building the project.And set it  up.
+   use the azure Devops documentation for Help
+   https://learn.microsoft.com/en-us/azure/devops/?view=azure-devops
+   ```shell
+   # first update
+   sudo apt update
+   # download the docker inside the agent
+   sudo apt install docker.io
+   #download the tar file from the command provided by azruedevops platform.
+   https://vstsagentpackage.azureedge.net/agent/4.248.0/vsts-agent-win-x64-4.248.0.zip
+   #run the below commands
+   mkdir myagent && cd myagent
+   tar zxvf ~/Downloads/vsts-agent-linux-x64-3.232.3.tar.gz
+   # configure the agent
+   ./config.sh
+   # enter the server url
+   https://dev.azure.com/{yourorganization}
+   # run the run.sh script.
+   ./run.sh
+   
+   ```
+4. Create 3 pipelines for each of the 3 microservice (i.e worker, vote and result)
+   ![{B57836DF-41C1-45D6-8C62-1F6AEBBEE9E9}](https://github.com/user-attachments/assets/28cd17d7-a9db-4fd2-bf91-ed3299b7091a)
+
