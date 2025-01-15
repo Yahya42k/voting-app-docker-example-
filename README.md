@@ -75,6 +75,10 @@ deal with them in Docker at a basic level.
    sudo apt update
    # download the docker inside the agent
    sudo apt install docker.io
+   # grant the azure user permission to the azure user
+   sudo usermod -aG docker azure user
+   # restart docker
+   sudo systemctl restart docker
    #download the tar file from the command provided by azruedevops platform.
    https://vstsagentpackage.azureedge.net/agent/4.248.0/vsts-agent-win-x64-4.248.0.zip
    #run the below commands
@@ -86,8 +90,10 @@ deal with them in Docker at a basic level.
    https://dev.azure.com/{yourorganization}
    # run the run.sh script.
    ./run.sh
-   
+   # if you want to check if the container registery hold the build image go to azure cli and login
+   Connect-AzContainerRegistry -Name azurecicd12
    ```
-4. Create 3 pipelines for each of the 3 microservice (i.e worker, vote and result)
+3. Create 3 pipelines for each of the 3 microservice (i.e worker, vote and result)
    ![{B57836DF-41C1-45D6-8C62-1F6AEBBEE9E9}](https://github.com/user-attachments/assets/28cd17d7-a9db-4fd2-bf91-ed3299b7091a)
+4. You can go and check in the container registry to see what all images are there.
 
